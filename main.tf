@@ -1,23 +1,7 @@
-locals {
-common_tags = {
-env = "test"
-owner = "Rashi"
-Name = "terraform-instance1-rashi-dev"
-}
-}
 
-resource "aws_security_group" "first" {
-depends_on = [ aws_security_group.second ]
-}
+resource "aws_instance" "example" {
+  ami           = "ami-02c21308fed24a8ab"  # Amazon Linux 2 AMI, change it as per your region
+  instance_type = "t3.micro"  # Instance type
 
-resource "aws_security_group" "second" {
-
-}
-
-
-resource "aws_instance" "my-instance2" {
-ami = "ami-066784287e358dad1"
-instance_type = "t2.micro"
-
-tags = local.common_tags
-}
+  tags = {
+ 
